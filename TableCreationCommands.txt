@@ -1,0 +1,61 @@
+Employee table : 
+
+CREATE TABLE EmployeeTBL(
+employeeId int primary key auto_increment,
+employeeName varchar(20),
+employeeEmailId varchar(35),
+employeePassword varchar(10)
+)auto_increment=100;
+
+----------------------------------------------
+
+Credit Score table :
+
+CREATE TABLE CreditScoreTBL(
+pan varchar(10) primary key,
+score int not null
+);
+
+-----------------------------------------------
+
+Customer table :
+
+CREATE TABLE CustomerTBL(
+customerId int primary key,
+firstName varchar(15),
+lastName varchar(15),
+emailId varchar(35),
+password varchar(10),
+phone bigint(10),
+pan varchar(10)
+);
+
+
+------------------------------------------------------
+
+Loan Table :
+
+CREATE TABLE LoanTBL(
+loanId int primary key auto_increment,
+loanType varchar(50)
+)auto_increment=1000;
+
+---------------------------------------------------------
+
+Loan Application Table :
+
+CREATE TABLE LoanApplicationTBL (
+    applicationId int primary key auto_increment,
+    customerId int,
+    loanId int,
+    status int
+)auto_increment=1000;
+
+
+ALTER TABLE LoanApplicationTBL
+ADD CONSTRAINT fk_customerId
+FOREIGN KEY (customerId) REFERENCES CustomerTBL(customerId);
+
+ALTER TABLE LoanApplicationTBL
+ADD CONSTRAINT fk_loanId
+FOREIGN KEY (loanId) REFERENCES LoanTBL(loanId);
